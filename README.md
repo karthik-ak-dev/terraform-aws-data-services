@@ -198,6 +198,40 @@ All modules implement AWS security best practices:
 | terraform | >= 1.0 |
 | aws | ~> 5.0 |
 
+## Versioning
+
+This module follows [Semantic Versioning](https://semver.org/). To use a specific version:
+
+```hcl
+module "aurora" {
+  source = "git::https://github.com/YOUR_USERNAME/terraform-aws-data-services.git//modules/aurora-postgres?ref=v1.0.0"
+  # ...
+}
+
+module "dynamodb" {
+  source = "git::https://github.com/YOUR_USERNAME/terraform-aws-data-services.git//modules/dynamodb?ref=v1.0.0"
+  # ...
+}
+```
+
+### Version Pinning (Recommended)
+
+Always pin to a specific version in production:
+
+| Method | Example | Use Case |
+|--------|---------|----------|
+| Exact version | `?ref=v1.0.0` | Production (recommended) |
+| Minor version | `?ref=v1.0` | Auto-patch updates |
+| Branch | `?ref=main` | Development only |
+
+### Creating Releases
+
+```bash
+# Tag a new release
+git tag -a v1.0.0 -m "Initial release"
+git push origin v1.0.0
+```
+
 ## Complete Example
 
 See [examples/complete](./examples/complete) for a full example deploying all data services.
